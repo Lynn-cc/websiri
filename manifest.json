@@ -1,25 +1,31 @@
 {
-  "name": "WebSiri",
-  "version": "0.1",
-  "manifest_version": 2,
-  "description": "My name is web siri !",
-  "browser_action": {
-    "default_icon": "favicon.ico",
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-      {
-          "matches": ["*://*/*"],
-              //"css": ["mystyles.css"],
-              "js": ["jquery.min.js", "page.js"]
-      }
-  ],
+    "name": "WebSiri",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "My name is web siri !",
 
-  //  "options_page": "options.html",
-  "background": {
-      "page": "background.html"
-  },
-  "permissions": [
-    "tabs"
-  ]
+    // 弹出页和ico
+    "browser_action": {
+        "default_icon": "favicon.ico",
+        "default_popup": "popup.html"
+    },
+
+    // 插入用户页面的文件,页面加载完成之后执行这里的js
+    "content_scripts": [{
+        "matches": ["*://*/*"],
+        //"css": ["mystyles.css"],
+        "js": ["page.js"]
+    }],
+
+    // 可以加一个插件选项页 点击插件的选项之后可以进入
+    // "options_page": "options.html",
+    "background": {
+        "page": "background.html"
+    },
+
+    //需要的chrome权限和需要插件跨域的网址
+    "permissions": [ 
+        "tabs",
+        "http://*.qq.com/*"
+    ]
 }
